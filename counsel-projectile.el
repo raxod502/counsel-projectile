@@ -287,7 +287,8 @@ invokes `projectile-commander' instead of
 (ivy-set-actions
  'counsel-projectile-switch-project
  '(("f" (lambda (dir)
-          (let ((projectile-switch-project-action 'counsel-projectile-find-file))
+          (let ((projectile-switch-project-action 'counsel-find-file)
+                (default-directory dir))
             (projectile-switch-project-by-name dir arg)))
     "find file")
    ("d" (lambda (dir)
@@ -298,11 +299,6 @@ invokes `projectile-commander' instead of
           (let ((projectile-switch-project-action 'counsel-projectile-switch-to-buffer))
             (projectile-switch-project-by-name dir arg)))
     "switch to buffer")
-   ("F" (lambda (dir)
-          (let ((projectile-switch-project-action 'counsel-find-file)
-                (default-directory dir))
-            (projectile-switch-project-by-name dir arg)))
-    "find file manually")
    ("s" (lambda (dir)
           (let ((projectile-switch-project-action 'projectile-save-project-buffers))
             (projectile-switch-project-by-name dir arg)))
